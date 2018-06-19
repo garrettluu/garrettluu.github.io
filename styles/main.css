@@ -15,6 +15,10 @@
     font-family:"Roboto";
     src: url("fonts/Roboto-Light.ttf");
 }
+@font-face {
+    font-family:"Roboto-Bold";
+    src: url("fonts/Roboto-Bold.ttf");
+}
 
 
 body{
@@ -88,7 +92,7 @@ p {
 li {
     display: inline-block;
 }
-a{
+a {
     /*display: block;*/
     color: #000;
     padding: 8px 16px;
@@ -102,6 +106,16 @@ a{
 li a.active {
     background-color: tomato;
     color: white;
+}
+
+img {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+figcaption {
+    font-family: Roboto-Bold, serif;
+    text-align: center;
 }
 
 #fancyrectangle {
