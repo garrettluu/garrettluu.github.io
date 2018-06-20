@@ -1,7 +1,8 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="script" href="scripts/main.js">
+    <meta charset="UTF-8">
     <title>
         Hello World
     </title>
@@ -13,15 +14,50 @@
             <div id="fancyrectangle">
             </div>
         </h1>
-        <h1>
-        </h1>
     </div>
-        <ul class="nav">
-            <li><a href="index.html" class="active">Blog</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="projects.html">Projects</a></li>
-        </ul>
-    <div class="blog">
+    <ul class="nav">
+        <li><a  id="navblog" class="active" >Blog</a></li>
+        <li><a  id="navabout">About Me</a></li>
+        <li><a href="projects.html" id="navprojects">Projects</a></li>
+    </ul>
+    <div id="blog">
+        <div class="entry">
+            <h2>
+                A Game of Catch (Web Development - Day 2)
+            </h2>
+            <h3>
+                2018.6.19
+            </h3>
+            <p>
+                Testing out animations in JavaScript, and modified some parts of the site. You'll notice now that images
+                have a click-to-zoom function, with some nice fade-in and fade-out animations to go along with it. I also
+                experimented with a new way of handling navigation between pages. The site is now technically on one page,
+                with fade transitions if you click on About and Blog (Projects is still not using this system). I came up
+                with a clever, albeit inefficient way of handling this navigation and animations. Again, there's probably
+                better ways to do this, but this is my solution for now.
+            </p>
+            <figure>
+                <img src="styles/images/entry2.png" id="img2" width="372px" height="auto">
+                <figcaption>Really Ugly Code I'm Sorry</figcaption>
+            </figure>
+            <p>
+                When you click on one of the buttons, the animation for the current block of text starts, and creates a
+                new blogeventlistener that waits for the end of the animation. When the animation ends, the next animation
+                is started up, and an abouteventlistener is created. Now, were are on the other page, so going back to
+                the original involves creating an abouteventlistener, which causes the blogeventlistener to also start up.
+                I like to visualize this as a ball being thrown back and forth between the two eventlisteners (the ball
+                in this case can be the nav variable, which changes depending on which option is selected).
+            </p>
+            <p>
+                This game of catch is easy to replicate for two buttons, but becomes more difficult if we try
+                to involve another player in the form of a third button. Another downside is that if you click the buttons
+                too fast, the page will become stuck, and you'll need to refresh the page for the animations to work again.
+                I'll try to find an easier, less insane way of implementing these fade animations in the future. More
+                updates and fixes are coming soon.
+            </p>
+            <div id="entry2" class="img-zoom">
+                <img class="zoom-content" id="img02">
+            </div>
         <div class="entry">
             <h2>
                 Web Development - Day 1
@@ -44,7 +80,7 @@
                 it is incredibly easy to visualize and design our app layout around this principle of nested LinearLayouts.
             </p>
             <figure>
-                <img src="styles/images/entry1.png" width="310px" height="auto">
+                <img src="styles/images/entry1.png" id="img1" width="310px" height="auto">
                 <figcaption>Example of Linear Layouts</figcaption>
             </figure>
             <p>
@@ -56,8 +92,22 @@
             </p>
             <p>
                 Web development isn't as hard as I thought it would be, but there is still a learning curve and surprises
-                along the way. Hopefully I can improve my skills and learn more things along the way.
+                along the way. Hopefully I can improve my skills and learn more things along the way, and I'm excited to
+                see where this journey takes me.
             </p>
+            <div id="entry1" class="img-zoom">
+                <img class="zoom-content" id="img01">
+            </div>
         </div>
+
     </div>
+    </div>
+    <div id="about">
+        <p>
+            Hello and welcome to my website! I'm Garrett, just a developer of various things.
+            Not much to see here yet, since I'm still building this site. Hopefully you'll return soon.
+        </p>
+    </div>
+    <script src="scripts/main.js"></script>
 </body>
+</html>
