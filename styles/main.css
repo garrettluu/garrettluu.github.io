@@ -26,9 +26,6 @@ body{
     margin-left: 20%;
     margin-right: 20%;
 }
-#main{
-    column-count: 2;
-}
 #header{
     background: url("images/titlebg.jpg") no-repeat;
     background-size: cover;
@@ -56,8 +53,8 @@ h1{
     font-size: 24px;
     margin: 0;
 }
-#blog {
-
+.entry {
+    z-index: 0;
 }
 h2 {
     text-align: left;
@@ -113,6 +110,7 @@ img {
     display:block;
     margin-left: auto;
     margin-right: auto;
+    z-index: -1;
 }
 figcaption {
     font-family: Roboto-Bold, serif;
@@ -126,51 +124,58 @@ figcaption {
     margin: auto;
 }
 
-#main{
-    width:100%;
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
 .img-zoom{
     position: fixed;
     display: none;
-    z-index: 1;
+    z-index: 10;
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     -webkit-animation-name: fadein;
-    -webkit-animation-duration: 0.6s;
+    -webkit-animation-duration: 0.25s;
     animation-name: fadein;
-    animation-duration: 0.6s;
+    animation-duration: 0.25s;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.9);
 }
 .zoom-content {
     margin: auto;
+    padding-top: 40px;
     display: block;
     width: 80%;
     max-width: 700px;
     -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
+    -webkit-animation-duration: 0.25s;
     animation-name: zoom;
-    animation-duration: 0.6s;
-    top: 50%;
-    left: 50%;
+    animation-duration: 0.25s;
 }
-.fadein  {
+.m-scene .scene-element {
+    animation-duration: .25s;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
+}
+.m-scene .scene-element--fade{
     -webkit-animation-name: fadein;
-    -webkit-animation-duration: 0.4s;
-    animation-name: fadein;
-    animation-duration: 0.4s;
+    animation-name:fadein;
 }
-.fadeaway  {
+.is-exiting .scene-element{
     -webkit-animation-name: fadeaway;
-    -webkit-animation-duration: 0.4s;
+    animation-name:fadeaway;
+}
+.fadein {
+    -webkit-animation-name: fadein;
+    -webkit-animation-duration: 0.25s;
+    animation-name: fadein;
+    animation-duration: 0.25s;
+}
+
+.fadeaway {
+    -webkit-animation-name: fadeaway;
+    -webkit-animation-duration: 0.25s;
     animation-name: fadeaway;
-    animation-duration: 0.4s;
+    animation-duration: 0.25s;
 }
 @-webkit-keyframes zoom {
     from {-webkit-transform:scale(.5);}
@@ -185,7 +190,14 @@ figcaption {
     from {opacity:0;}
     to {opacity:1;}
 }
-
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 @keyframes fadein {
     from {opacity:0;}
     to {opacity:1;}
@@ -198,7 +210,4 @@ figcaption {
 @keyframes fadeaway {
     from {opacity:1;}
     to {opacity:0;}
-}
-#about {
-    display: none;
 }

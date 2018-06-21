@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles/main.css">
+
     <meta charset="UTF-8">
     <title>
         Hello World
     </title>
 </head>
 <body>
+    <div id="main">
     <div id="header">
         <h1 id="title">
             GARRETT LUU
@@ -15,13 +17,71 @@
             </div>
         </h1>
     </div>
+
     <ul class="nav">
-        <li><a  id="navblog" class="active" >Blog</a></li>
-        <li><a  id="navabout">About Me</a></li>
-        <li><a href="projects.html" id="navprojects">Projects</a></li>
+        <li><a  href="index.html" id="navblog" class="active" >Blog</a></li>
+        <li><a  href="about.html" id="navabout">About Me</a></li>
+        <li><a  href="projects.html" id="navprojects">Projects</a></li>
     </ul>
-    <div id="blog">
-        <div class="entry">
+
+    <div id="blog" class="m-scene">
+        <div class="entry scene-element scene-element--fade">
+            <h2>
+                jQuery Fun and Newly Unearthed Bugs (Web Development - Day 3)
+            </h2>
+            <h3>
+                2018.6.20
+            </h3>
+            <p>
+                Today was rather uneventful, but I made some major changes to how the animations between pages are handled.
+                Gone is the cumbersome and overdesigned "game of catch," and now we have proper smooth transitions between
+                pages using jQuery and smoothState.js. Page loads are completely invisible, providing a more seamless
+                experience in navigating the site. smoothState.js is nice in that it allows for animations to be easily
+                called whenever you want them to be called, such as when you click the link or when the page finishes
+                loading. This means that you don't need to put eventlisteners everywhere to check when animations have
+                finished, and also allows for better timing of animations.
+            </p>
+            <p>
+                The animations actually took longer than I initially thought to set up. After some fiddling, reading through
+                what turned out to be deprecated examples, I got the page loading to be invisible, but the fade-out animation
+                wasn't quite working. The fade-out was part of the .is-exiting class, which reverses the animation whatever
+                you assigned it to. Turns out that the example used .m-scene.is-exiting, when .is-exiting is what actually
+                worked. I just love it when people write things and provide inaccurate examples to supplement them.
+            </p>
+            <p>
+                jQuery is also going to allow me to do more interesting things. Currently, each image that has the click-
+                to-zoom feature has its own JavaScript, which is going to get impractical as more and more images
+                are added to the site. With jQuery, I can get elements from the page based on className rather than id,
+                which will allow me to apply scripts to multiple elements of a class at the same time rather than having
+                to individually copy code for each one.
+            </p>
+            <p>
+                    Finally, it seems I've found some new bugs that I wasn't aware of before. The click-to-zoom feature
+                    causes the images to slip under the text of older blog posts. Images from older blog posts are fine
+                    if there's a newer post under it, but look like this when over older posts.
+            </p>
+            <figure>
+                <img src="styles/images/entry3.png" id="img3" width="500px" height="auto">
+                <figcaption>I Fixed This Bug Already</figcaption>
+            </figure>
+            <p>
+                My hypothesis on this is that the older images have the same z-index (which I tried changing to 10, but that
+                didn't work), and since the older entries occur later on the html file, they end up being "layered" on
+                top and take priority over the newer entries.
+            </p>
+            <p>
+                However, as I was writing this, I decided to try some possible solutions. Putting the div for the zoomed image outside
+                of the div for each blog entry turned out to be the correct way. We can now set the z-index of the zoomed
+                image and the blog entries separately, so the zoomed images will always be on top.
+                Who knew solutions could be so simple?
+            </p>
+
+
+        </div>
+        <div id="entry3" class="img-zoom">
+        <img class="zoom-content" id="img03">
+        </div>
+        <div class="entry scene-element scene-element--fade">
             <h2>
                 A Game of Catch (Web Development - Day 2)
             </h2>
@@ -55,10 +115,12 @@
                 I'll try to find an easier, less insane way of implementing these fade animations in the future. More
                 updates and fixes are coming soon.
             </p>
-            <div id="entry2" class="img-zoom">
-                <img class="zoom-content" id="img02">
-            </div>
-        <div class="entry">
+
+        </div>
+        <div id="entry2" class="img-zoom">
+            <img class="zoom-content" id="img02">
+        </div>
+        <div class="entry scene-element scene-element--fade">
             <h2>
                 Web Development - Day 1
             </h2>
@@ -95,19 +157,16 @@
                 along the way. Hopefully I can improve my skills and learn more things along the way, and I'm excited to
                 see where this journey takes me.
             </p>
-            <div id="entry1" class="img-zoom">
-                <img class="zoom-content" id="img01">
-            </div>
+
         </div>
+        <div id="entry1" class="img-zoom">
+            <img class="zoom-content" id="img01">
+        </div>
+    </div>
 
     </div>
-    </div>
-    <div id="about">
-        <p>
-            Hello and welcome to my website! I'm Garrett, just a developer of various things.
-            Not much to see here yet, since I'm still building this site. Hopefully you'll return soon.
-        </p>
-    </div>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="scripts/jquery.smoothState.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 </html>
