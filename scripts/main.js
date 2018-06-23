@@ -65,11 +65,11 @@ $(function () {
     var $body = $('html, body');
     var $page = $('#main'),
         options = {
-            debug: true,
             prefetch: true,
+            scroll: true,
             cacheLength: 2,
             onStart: {
-                duration: 250, // Duration of our animation
+                duration: 325, // Duration of our animation
                 render: function ($container) {
                     // Add your CSS animation reversing class
                     $container.addClass('is-exiting');

@@ -27,6 +27,87 @@
     <div id="blog" class="m-scene">
         <div class="entry scene-element scene-element--fade">
             <h2>
+                Arcs and Splines - FRC Motion Profiling Part 1
+            </h2>
+            <h3>
+                2018.6.22
+            </h3>
+            <p>
+                I updated some stuff on the site, but I want to talk about some non-web stuff today. I've been involved
+                with FRC (FIRST Robotics Competition) for 4 years now, and I've done software for the last 2 years on my
+                team (4322). This year, despite our limited resources, we were able to develop motion profiling during
+                the build season, allowing for smooth driving during the Autonomous period of the game.
+            </p>
+            <p>
+                The concept of motion profiling is simple. Rather than the oscillating nature of a PID loop, we instead
+                smoothly ramp up in velocity, cruise at a constant speed, then ramp back down smoothly to a stop. If we
+                graphed out the velocity of the robot over time, we see a trapezoidal shape, which is why it's usually
+                referred to as a trapezoidal motion profile.
+            </p>
+            <figure>
+                <img src="styles/images/entry4.0.png" class="img"  width="200px" height="auto">
+                <figcaption>A Trapezoidal Motion Profile</figcaption>
+            </figure>
+            <p>
+                Applying this in the straight-line case is simple. We simply generate the velocity and position values at every interval
+                (e.g. every tenth of a second) and stream them to our motion controllers.  With feedback from encoders, we can use a PID loop with
+                feed forward to maintain our velocity. It does the job well, even with minimal tuning.
+                The TalonSRX, which most teams
+                (including mine) use, has built-in support for motion profiling, so just follow their examples that they
+                provided and adapt it for your team's use case.
+            </p>
+            <p>
+                The fun comes when we apply this to the 2-D case, and suddenly many more questions arise. Specifically, what
+                type of path/curve do we take to get to our location? How do we generate the points along the path?
+                How do we get our robot to follow that path?
+            </p>
+            <p>
+                To start, we should consider what type of path our robot should follow. There are many types of curves and
+                splines possible, such as polynomials, arcs, or even sine waves, but I think that the three most relevant
+                are biarcs, cubic splines, and quintic splines. Biarcs are the simplest, and cubic and quintic splines are more complex
+                but can produce smoother results. For the purposes of FRC, it really doesn't matter which one you use for
+                99% of cases as long as you keep the numbers reasonable.
+            </p>
+            <p>
+                Biarcs are the simplest for the robot to follow because it only involves one major speed change. They are made
+                up of two arcs, which are pieces of circles, meaning that the robot can move at a constant speed after it ramps up
+                due to the constant curvature. All you need to do is calculate the radius of each arc from the start and end angle, and
+                use that number to determine your left and right wheel velocities. The only downside is the point between two arcs, where
+                the robot needs to make a sudden instantaneous speed change, which can result in some jerkiness and slight
+                oscillations.
+            </p>
+            <figure>
+                <img src="styles/images/entry4.1.png" class="img"  width="250px" height="auto">
+                <figcaption>Biarc Interpolation</figcaption>
+            </figure>
+            <p>
+                Splines, on the other hand, are easy to calculate and relatively easy to follow. In the case of quintic
+                splines, we also get a benefit of smooth curvature, which results in minimal jerking but can result in
+                weird paths due to the constraints. To calculate the spline, we need three numbers: the straight
+                distance from your beginning and end, the starting angle, and the ending angle, both relative to the
+                straight line formed from beginning to end. We'll call those <b>D</b>, <b>&theta;<sub>1</sub></b>, and <b>&theta;
+                <sub>2</sub></b>, respectively. To keep things simple, we'll put the start and end points on the x-axis.
+                We just need to start with a general equation h(x) = ax<sup>3</sup> +
+                bx<sup>2</sup> + cx + d, then apply constraints: h(0) = 0, h(D) = 0, h'(0) = tan(&theta;<sub>1</sub>),
+                h'(D) = tan(&theta;<sub>2</sub>). At this point, it becomes a system of equations, and can be solved using
+                substitution or elimination, whichever you prefer. The quintic case is the same, only you'll set the second
+                derivative to 0 at the beginning and end.
+                I highly encourage you to take a look at this interactive
+                demo I've created <a href="https://www.desmos.com/calculator/4d2pcluehp">here</a> if you want a visual.
+            </p>
+
+            <figure>
+                <img src="styles/images/entry4.2.png" class="img"  width="250px" height="auto">
+                <figcaption>Spline Interpolation</figcaption>
+            </figure>
+            <p>
+                Now that we have the paths we are going to use, what do we do with them? The next step is to create a
+                <b>trajectory</b>, which means we are calculating our velocity and position at regular intervals along
+                the curve. Generating these numbers will be covered in the next entry.
+            </p>
+        </div>
+        <div class="entry scene-element scene-element--fade">
+            <h2>
                 jQuery Fun and Newly Unearthed Bugs (Web Development - Day 3)
             </h2>
             <h3>
@@ -159,7 +240,7 @@
     </div>
 
     </div>
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="scripts/jquery.smoothState.js"></script>
     <script src="scripts/main.js"></script>
 </body>
