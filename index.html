@@ -27,6 +27,78 @@
     <div id="blog" class="m-scene">
         <div class="entry scene-element scene-element--fade">
             <h2>
+                Thoughts on Kotlin
+            </h2>
+            <h3>
+                2018.6.29
+            </h3>
+            <figure>
+                <img src="styles/images/entry5.png" class="img"  width="670px" height="auto">
+            </figure>
+            <p>
+                Until Google announced official support for Kotlin back in Google I/O 2017, I never had real experience
+                with the language beyond skimming through some documentation and "Hello World." It seemed like an interesting
+                language, but I've just never used it enough to really say that I love it or hate it. With Google's
+                announcement, I jumped at the chance to try it out for a full-scale project of making an Android app to
+                be released on the Play Store. I've done some basic Android stuff in the past, but never on a scale like
+                this, so I thought it would be fun to put some of the things I've learned into an actual project. It's
+                definitely a daunting task, and I've been working on it on-and-off this past year with somewhat decent
+                progress. Obviously, it's still no where near being done though!
+            </p>
+            <p>
+                Now that I had some time to work with the language, and I've begun to understand its strengths, weaknesses,
+                and quirks, I think I have a pretty good grasp of Kotlin in general. There are still things that I'm discovering
+                every day that make me say "wow that's convenient" or "that's a weird way of doing it." Here are some of
+                my thoughts about some of the features and oddities of Kotlin.
+            </p>
+            <p>
+                Kotlin does for Java what Swift did for Objective C, as I like to see it. It tries to make things easier,
+                more intuitive, and more convenient to use, while maintaining interoperability with Java so that you
+                can easily integrate it into your projects. The syntax has some key differences, but the structure is still
+                the same as Java (or any other OOPL, for that matter), with classes, methods, variables, etc. One of the
+                key differences is the lack of semicolons at the end of lines, which makes me relieved to see, but I still
+                find myself instinctively typing them in from muscle memory, even after nearly a year with the language.
+                Variables are another key difference; for most cases, you can just use "var," and Kotlin will automatically
+                determine what type of variable it is. You can also declare variables without initializing them, but you need
+                the "lateinit" modifier for that, which I find rather unnecessary and annoying.
+            </p>
+            <p>
+                Switch-statements are now "when" statements, and have a slightly more simple syntax than before. I prefer
+                this over the switch-statements of Java, which seem odd compared to the rest of the language with all the
+                "case" and "break." If-statements still work as before, but now they also replace ternary operators and
+                thus can return values. If for some reason you like making really complicated ternary statements that are
+                entirely unreadable, Kotlin makes them a little easier for other people to understand. So some garbage like this
+            </p>
+            <code>
+                out = usesCeiling ? (out > 0.8) ? 0.8 : ((out < -0.8) ? -.8 : out) : out; // (ಥ﹏ಥ) (ʘᗩʘ')
+            </code>
+            <p>
+                becomes
+            </p>
+            <code>
+                out = if (usesCeiling) if ((out > 0.8)) 0.8 else (if ((out < -0.8)) -.8 else out) else out
+            </code>
+            <p>
+                Still somewhat hard to decipher, but less obtuse than the Java example.
+            </p>
+            <p>
+                The last thing I want to discuss is static methods, which is my least favorite part about Kotlin.
+                In Java, static methods and variables are as easy as adding the "static" keyword in the variable declaration.
+                With Kotlin, you have to declare a "companion object" and put all of your static variables and methods
+                inside of that companion object. This just adds an unnecessary layer of complexity to the language. Innovation
+                for innovation's sake isn't good, and I would've been more than satisfied with having kept the static keyword
+                from Java.
+            </p>
+            <p>
+                Kotlin as a whole, however, is a breath of fresh air for Java, and I'm very glad it exists. I think that many of its
+                features are convenient and great, with some minor oddities that I would like to see gone. For Android
+                development, I have (for the most part) switched over to Kotlin. The change was easy to make, and being able
+                to continue using old Java code alongside Kotlin is another bonus. Java will still have a place, but I see
+                Kotlin as a suitable replacement.
+            </p>
+        </div>
+        <div class="entry scene-element scene-element--fade">
+            <h2>
                 Arcs and Splines - FRC Motion Profiling Part 1
             </h2>
             <h3>
