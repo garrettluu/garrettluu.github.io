@@ -1,65 +1,3 @@
-// stupid = function() {
-//     let imageZoom1 = document.getElementById('entry1');
-//     let imageZoom2 = document.getElementById('entry2');
-//     let imageZoom3 = document.getElementById('entry3');
-//
-//     let img1 = document.getElementById('img1');
-//     let zoomContent1 = document.getElementById('img01');
-//
-//     let img2 = document.getElementById('img2');
-//     let zoomContent2 = document.getElementById('img02');
-//
-//     let img3 = document.getElementById('img3');
-//     let zoomContent3 = document.getElementById('img03');
-//
-//
-//     img1.onclick = function () {
-//         imageZoom1.style.display = "block";
-//         zoomContent1.src = this.src;
-//     };
-//
-//     imageZoom1.onclick = function () {
-//         imageZoom1.classList.add('fadeaway');
-//         imageZoom1.addEventListener("animationend", listener, false);
-//
-//     };
-//
-//     img2.onclick = function () {
-//         imageZoom2.style.display = "block";
-//         zoomContent2.src = this.src;
-//     };
-//
-//     imageZoom2.onclick = function () {
-//         imageZoom2.classList.add('fadeaway');
-//         imageZoom2.addEventListener("animationend", listener, false);
-//
-//     };
-//
-//     img3.onclick = function () {
-//         imageZoom3.style.display = "block";
-//         zoomContent3.src = this.src;
-//     };
-//
-//     imageZoom3.onclick = function () {
-//         imageZoom3.classList.add('fadeaway');
-//         imageZoom3.addEventListener("animationend", listener, false);
-//
-//     };
-//
-//     function listener(event) {
-//         if (event.type === "animationend") {
-//             imageZoom1.style.display = "none";
-//             imageZoom1.classList.remove('fadeaway');
-//             imageZoom1.removeEventListener("animationend", listener, false);
-//             imageZoom2.style.display = "none";
-//             imageZoom2.classList.remove('fadeaway');
-//             imageZoom2.removeEventListener("animationend", listener, false);
-//             imageZoom3.style.display = "none";
-//             imageZoom3.classList.remove('fadeaway');
-//             imageZoom3.removeEventListener("animationend", listener, false);
-//         }
-//     }
-// }
 $(function () {
     'use strict';
     var $body = $('html, body');
@@ -91,7 +29,7 @@ $(function () {
         },
         smoothState = $page.smoothState(options).data('smoothState');
 
-    function stupid() {
+    function imageZoomHandler(){
         var img = $('.img');
         var imgZoom = $('.img-zoom');
         img.click(function () {
@@ -108,5 +46,5 @@ $(function () {
             });
         });
     }
-    stupid();
+    imageZoomHandler();
 });
