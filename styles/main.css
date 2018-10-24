@@ -35,6 +35,7 @@ body{
 
     padding-bottom: 100px;
     padding-top: 100px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 table {
     margin:0;
@@ -92,17 +93,23 @@ p a{
 }
 .nav {
     list-style-type: none;
-    padding:0;
-    /*position: absolute;*/
-    /*left: 0;*/
-    /*top: 100%;*/
+    margin: 0;
+    padding:16px;
+    position:-webkit-sticky;
+    position: sticky;
+    background-color: white;
+    z-index: 5;
+    top: 0;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 li {
     display: inline-block;
+    background-color: white;
 }
 a {
     /*display: block;*/
     color: #000;
+    background-color: white;
     padding: 8px 16px;
     width: auto;
     text-decoration: none;
