@@ -30,8 +30,8 @@ $(function () {
         smoothState = $page.smoothState(options).data('smoothState');
 
     function imageZoomHandler(){
-        var img = $('.img');
-        var imgZoom = $('.img-zoom');
+        let img = $('.img');
+        let imgZoom = $('.img-zoom');
         img.click(function () {
             imgZoom.css('display', 'block');
             $('.zoom-content').attr('src', $(this).attr('src'));
@@ -46,5 +46,18 @@ $(function () {
             });
         });
     }
+
+    let navBar = $('.nav');
+    // if ($(window).scrollTop > 10) {
+    //     navBar.addClass('shadow');
+    // }
+    $(window).scroll(function() {
+        if ($(window).scrollTop() >= 286) {
+            navBar.addClass('shadow');
+        }
+        else {
+            navBar.removeClass('shadow');
+        }
+    });
     imageZoomHandler();
 });
