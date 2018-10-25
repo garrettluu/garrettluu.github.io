@@ -48,9 +48,6 @@ $(function () {
     }
 
     let navBar = $('.nav');
-    // if ($(window).scrollTop > 10) {
-    //     navBar.addClass('shadow');
-    // }
     $(window).scroll(function() {
         if ($(window).scrollTop() >= 286) {
             navBar.addClass('shadow');

@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles/main.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts/jquery.smoothState.js"></script>
+    <script src="scripts/main.js"></script>
     <meta charset="UTF-8">
     <title>
         Hello World
@@ -27,6 +29,33 @@
     <div id="blog" class="m-scene">
         <div class="entry scene-element scene-element--fade">
             <h2>
+                Shady Business and Sticky Situations (Web Development - Day 4)
+            </h2>
+            <h3>
+                2018.10.25
+            </h3>
+            <p>
+                It's been a while since the last web development post, but there haven't really been changes to the
+                site outside of content. Recently, however, I wanted to modify the nav bar of the site to better accommodate
+                scrolling. In the past, if a visitor were to scroll all the way to the bottom of this page, and then wanted
+                to visit my Projects page, they would have to scroll all the way back up before they can navigate to that
+                page. This is obviously a flawed design, and worsens the user experience by forcing the user to take extra
+                steps to navigate the site.
+            </p>
+            <p>
+                Enter the sticky nav bar. Same as a regular nav bar, until the user scrolls past it. The nav bar "sticks"
+                to the top of the screen while the user continues scrolling. Perfect! Now you can scroll to the very
+                bottom of the page and still have access to other pages without needing to go to the top. Alas, the world
+                of web development is never that simple. Stopping at this point results in a functional but abrupt
+                transition between the nav bar and the text on the page.
+            </p>
+            <figure>
+               <img src="styles/images/entry7.PNG" class="img" width="670px" height="auto">
+                <figcaption>Abrupt transitions are not good</figcaption>
+            </figure>
+        </div>
+        <div class="entry scene-element scene-element--fade">
+            <h2>
                 New Beginnings, Old Friends, and Vim
             </h2>
             <h3>
@@ -41,7 +70,7 @@
             </figure>
             <p>
                 It's been a while since the last post, but I've finally gotten situated in UCSD. Met some new people,
-                caught up with some old friends, began the job/intership hunt, and joined some clubs.
+                caught up with some old friends, began the job/internship hunt, and joined some clubs.
                 Currently studying
                 computer science and taking a Java class, which has been pretty smooth so far. One thing that I've gotten
                 somewhat adjusted to was the use of vim instead of an IDE for writing Java. The change was quite
