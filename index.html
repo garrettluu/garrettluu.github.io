@@ -53,6 +53,68 @@
                <img src="styles/images/entry7.PNG" class="img" width="670px" height="auto">
                 <figcaption>Abrupt transitions are not good</figcaption>
             </figure>
+            <p>
+                There are a few solutions to this. The easiest would be to make the nav bar a different color from the
+                background of the page. This would create a clear border and a good transition between the content of
+                the page and the bar. However, I want to keep the same color, so the other option would be a shadow, which
+                provides a separation between the two elements.
+            </p>
+            <p>
+                Unfortunately, there is no official support for detecting when an element with sticky positioning is "stuck,"
+                so the only solutions available are just some hacks loosely slapped together. The simplest of these is
+                using a white div to hide the shadow, and scrolls away to reveal the shadow. This solution feels like
+                <i>too</i> much of a hack, and only provides a band-aid solution.
+            </p>
+            <p>
+                Perhaps the most robust solution is Google's own, using IntersectionObservers and creating their own
+                method of detecting when a sticky element is "stuck." It's a very interesting read, and you can learn
+                more about it <a href="https://developers.google.com/web/updates/2017/09/sticky-headers">here.</a> While
+                this is quite possibly the most elegant and proper solution, and something I would want to implement
+                some time in the future, it wasn't the solution I went with.
+            </p>
+            <p>
+                The third option is actually very simple: set up a scroll listener and detect when the window has scrolled
+                past the nav bar. Thankfully, the code to set this up is very simple:
+                <code>
+
+                </code>
+            </p>
+            <code>
+                <pre>
+                function navBarShadowHandler() {<br>
+                &#9;let navBar = $('.nav');<br>
+                &#9;$(window).scroll(function () {<br>
+                &#9;&#9;if ($(window).scrollTop() >= 286) {<br>
+                &#9;&#9;&#9;navBar.addClass('shadow');<br>
+                &#9;&#9;}<br>
+                &#9;&#9;else {<br>
+                &#9;&#9;&#9;navBar.removeClass('shadow');<br>
+                &#9;&#9;}<br>
+                &#9;});<br>
+                }
+                </pre>
+            </code>
+            <p>
+                We read the <code>scrollTop()</code> value and see if it's above a certain number (this number can be anything; 286 was where my nav bar was).
+                If it is, then we
+                have scrolled past it, and thus we should add a shadow. The shadow CSS class simple contains a
+                <code>box-shadow</code> attribute, which you can read more about
+                <a href="https://css-tricks.com/almanac/properties/b/box-shadow/">here.</a> I found that
+                <code>
+                    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+                </code>
+                worked the best for creating a subtle but noticeable effect. After this, I slapped a quick .25 second
+                transition, and everything ran smoothly!
+            </p>
+            <p>
+                This solution is obviously not as perfect and well-built as Google's, but it gets the job done and can
+                be set up much faster. The major downside is performance; the function inside the scroll event fires
+                every time a user is scrolling (which is dozens and dozens of times a second). For a small site like this,
+                the difference is somewhat negligible, but for a larger, more computationally intensive project, you can
+                see how efficiency becomes much more important. The end goal would be to use the Google implementation,
+                but I'm satisfied with the current solution for now.
+            </p>
+
         </div>
         <div class="entry scene-element scene-element--fade">
             <h2>

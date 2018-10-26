@@ -23,7 +23,10 @@ $(function () {
                     $container.removeClass('is-exiting');
                     // Inject the new content
                     $container.html($newContent);
-                    stupid();
+
+                    //Add jQuery/JS functions that need to run here!
+                    imageZoomHandler();
+                    navBarShadowHandler();
                 }
             }
         },
@@ -46,15 +49,18 @@ $(function () {
             });
         });
     }
+    function navBarShadowHandler() {
+        let navBar = $('.nav');
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= 286) {
+                navBar.addClass('shadow');
+            }
+            else {
+                navBar.removeClass('shadow');
+            }
+        });
+    }
 
-    let navBar = $('.nav');
-    $(window).scroll(function() {
-        if ($(window).scrollTop() >= 286) {
-            navBar.addClass('shadow');
-        }
-        else {
-            navBar.removeClass('shadow');
-        }
-    });
     imageZoomHandler();
+    navBarShadowHandler();
 });
