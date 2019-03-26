@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="scripts/jquery.smoothState.js"></script>
     <script src="scripts/main.js"></script>
+
     <meta charset="UTF-8">
     <title>
         Hello World
@@ -27,6 +28,81 @@
     </ul>
     <div class="cover"></div>
     <div id="blog" class="m-scene">
+        <div class="entry scene-element scene-element--fade">
+            <h2>
+                3D Graphing, Rotations, and Projections
+            </h2>
+            <h3>
+                2019.3.24
+            </h3>
+            <p>
+                About a year ago, I started work on R3, a 3D grapher for the TI-84 Plus CE, and it was one of my most
+                ambitious projects. I had no real knowledge of how 3D graphics worked, or much knowledge about math in
+                3D in general. However, now that I've had a chance to study the math more closely, I decided to reboot
+                this project, cleaning up code and adding more features.
+            </p>
+            <p>
+                In terms of code cleanup, my code from two years ago compared to now would be completely different. In
+                R3's code, nothing was commented, magic number and strings were used freely, and I had no qualms about
+                using a "goto" statement in the control flow. Not good. My first quarter in college has made me more
+                aware of industry practices and the readability of code, so a huge refactor would need to be done before
+                adding any new code.
+            </p>
+            <p>
+                A few weeks later, and the Cuboid project was born. Cuboid is meant to be an intuitive way to handle 3D
+                graphics on the CE. Vectors represent 3D points in space, pixels represent actual points on the 2D plane
+                of the screen, and projections are ways of going from 3D to 2D. I also plan to add other features as
+                well, including linear transformations from R3 to R3 (and possibly between dimensions) and an infix
+                expression parser
+            </p>
+            <p>
+                The mathematics involving this stuff isn't actually that hard to understand, and involves some very
+                basic linear algebra and matrix multiplication to derive some of the equations I used. For rotating
+                points, the vector was multiplied with the corresponding rotation matrix. Let's say we want to rotate
+                some point \((x, y, z)\) about the y axis by some angle \(\theta\). All we need to do is compute this
+                matrix multiplication:
+            </p>
+            <p>
+                $$\begin{bmatrix}\cos \theta & 0 & \sin \theta \\ 0 & 1 & 0 \\ -\sin \theta & 0 & \cos \theta \end{bmatrix}
+                \cdot \begin{bmatrix} x \\ y \\ z \end{bmatrix} =
+                \begin{bmatrix} x \cos \theta + z \sin \theta \\ y \\ -x \sin \theta + z \cos \theta \end{bmatrix}
+                $$
+            </p>
+            <p>
+                The resulting vector we get in the end is our rotated point. Notice how since we rotated about the
+                y-axis, the y coordinate of the new point remains unchanged from the original. The next step is to
+                project that vector onto the 2D surface of the screen. The simplest is an orthographic projection, which
+                essentially just "flattens" things against some arbitrary plane and scales them up by some scalar value.
+                Perspective and foreshortening are not considered; in other words, an object will have the same apparent
+                size no matter how far away it is from the camera. For example, let's try to project our point
+                \((x, y, z)\) to our calculator screen.
+                $$\begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} x \\ y \\ z \end{bmatrix}
+                = \begin{bmatrix} x \\ z \end{bmatrix} $$
+                Seems deceptively simple, but there are a few adjustments we need to make. First, this scales each
+                unit in the 3D world to one pixel on the screen, so we need to add a scaling factor if we want to see
+                things more clearly. Next, we need to flip the y coordinate of the new pixel, since pixel coordinates
+                start at the top and grow downward. Finally, we need an offset to properly center the projection, since
+                \((0,0)\) starts at the top-left corner of the screen.
+                $$s \cdot \begin{bmatrix} x \\ z \end{bmatrix} + \begin{bmatrix} 160 \\ 120 \end{bmatrix}$$
+            </p>
+            <p>
+                As you can see, these calculations are actually very basic and easy to understand, and implementing them
+                in code would be very easy. Using C again gave me an opportunity to explore some of the nuances of the
+                language, especially in regards to manipulating pointers. One main oddity I was unaware of in C was the
+                use of <b>function pointers</b>, and how functions/methods themselves are a type and thus can be
+                referenced through a pointer. This also meant function overloading was not possible, which is very
+                different to what I was used to in Java. The main thing to keep in mind when dealing with pointers is
+                to remember to free all memory used. Every malloc or calloc needs a corresponding call to free. It took
+                me quite a while to get used to the use of pointers, and even now I still don't understand all of the
+                edge cases involving them.
+            </p>
+            <p>
+                At this point in the project, all that is left to do is rewrite R3 using the new library, which
+                (hopefully) offers better performance and cleaner code. With the knowledge and experience gained from
+                this project, I want to be able to produce a production-quality final product. I am excited to continue
+                working on this project once again. Let's see where this road takes me!
+            </p>
+        </div>
         <div class="entry scene-element scene-element--fade">
             <h2>
                 Shady Business and Sticky Situations (Web Development - Day 4)
@@ -446,5 +522,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="scripts/jquery.smoothState.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 </body>
 </html>
