@@ -158,15 +158,15 @@
             <code>
                 <pre>
                 function navBarShadowHandler() {<br>
-                &#9;let navBar = $('.nav');<br>
-                &#9;$(window).scroll(function () {<br>
-                &#9;&#9;if ($(window).scrollTop() >= 286) {<br>
-                &#9;&#9;&#9;navBar.addClass('shadow');<br>
-                &#9;&#9;}<br>
-                &#9;&#9;else {<br>
-                &#9;&#9;&#9;navBar.removeClass('shadow');<br>
-                &#9;&#9;}<br>
-                &#9;});<br>
+                    let navBar = $('.nav');<br>
+                    $(window).scroll(function () {<br>
+                        if ($(window).scrollTop() >= 286) {<br>
+                            navBar.addClass('shadow');<br>
+                        }<br>
+                        else {<br>
+                            navBar.removeClass('shadow');<br>
+                        }<br>
+                    });<br>
                 }
                 </pre>
             </code>
@@ -364,11 +364,11 @@
                 splines, we also get a benefit of smooth curvature, which results in minimal jerking but can result in
                 weird paths due to the constraints. To calculate the spline, we need three numbers: the straight
                 distance from your beginning and end, the starting angle, and the ending angle, both relative to the
-                straight line formed from beginning to end. We'll call those <b>D</b>, <b>&theta;<sub>1</sub></b>, and <b>&theta;
-                <sub>2</sub></b>, respectively. To keep things simple, we'll put the start and end points on the x-axis.
-                We just need to start with a general equation h(x) = ax<sup>3</sup> +
-                bx<sup>2</sup> + cx + d, then apply constraints: h(0) = 0, h(D) = 0, h'(0) = tan(&theta;<sub>1</sub>),
-                h'(D) = tan(&theta;<sub>2</sub>). At this point, it becomes a system of equations, and can be solved using
+                straight line formed from beginning to end. We'll call those \(D\), \(\theta_{1}\), and \(\theta_{2}\),
+                respectively. To keep things simple, we'll put the start and end points on the x-axis.
+                We just need to start with a general equation \(h(x) = ax^{3} +
+                bx^{2} + cx + d\), then apply constraints: \(h(0) = 0\), \(h(D) = 0\), \(h'(0) = tan(\theta_{1})\),
+                \(h'(D) = tan(\theta_{2})\). At this point, it becomes a system of equations, and can be solved using
                 substitution or elimination, whichever you prefer. The quintic case is the same, only you'll set the second
                 derivative to 0 at the beginning and end.
                 I highly encourage you to take a look at this interactive
