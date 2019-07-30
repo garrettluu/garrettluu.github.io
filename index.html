@@ -31,6 +31,77 @@
     <div id="blog" class="m-scene">
         <div class="entry scene-element scene-element--fade">
             <h2>
+                Building Web Applications with the FERN Stack - Basic Setup
+            </h2>
+            <h3>
+                2019.6.23
+            </h3>
+            <p>
+                Most people by now have probably heard of or had experience with the MEAN stack or MERN stack before.
+                If you haven't, MEAN stands for MongoDB, Express, Angular, and Node.js. Each of these components is
+                important to building a full-stack web application; Angular for the client, Express and Node for the
+                server, which interfaces with MongoDB, the database. The MERN stack is the same, but replaces Angular
+                with React, and is quickly gaining popularity due to the flexibility of React.
+            </p>
+            <p>
+                With these basics in mind, I would like to introduce the FERN stack. Similar to the MERN stack, but
+                Google's Firebase is used in place of MongoDB. Traditional database setups are very difficult to manage,
+                requiring developers to deal with security, scaling, and user authentication among other things.
+                Firebase handles all of that for you, packaged into a nice and (relatively) easy-to-use API.
+            </p>
+            <p>
+                While I won't go over every feature of Firebase, we'll start by setting some things up and creating
+                a skeleton application which will serve as scaffolding for any future FERN applications that you would
+                want to build.
+            </p>
+            <p>
+                We'll start by creating our Express app using the express generator. Start by opening your terminal
+                and running <code>npm install -g express-generator</code> and then running
+                <code>express ./fern && cd ./fern</code> to create the Express app. This will serve as our backend.
+            </p>
+            <img src="styles/images/fern0.png" class="img" width="1058" height="673"/>
+            <p>
+                The next step is generate the React client, which can be done easily by running the command
+                <code>npx create-react-app client</code>. This will create a React client in a folder named "client",
+                and is what will contain all of our front-end code.
+            </p>
+            <img src="styles/images/fern1.png" class="img" width="1040" height="871" />
+            <p>
+                At this point, we have each component set up, but now we need to make them work together and talk to
+                each other. <code>cd</code> into your client directory and open up your <code>package.json</code> with
+                your favorite editor. Change the <code>start</code> script to be
+                <code>set PORT=3000 && react-scripts start</code>. This is to ensure that our client runs on the correct
+                port.
+            </p>
+            <p>
+                Next up, we need to change the port of the server to 3001 so that it doesn't overlap with the client.
+                <code>cd</code> into the bin directory and open up the <code>www</code> file with your favorite editor.
+                Change the port to 3000 by replacing the <code>var port</code> with
+                <code>var port = normalizePort(process.env.PORT || '3001');</code>.
+            </p>
+            <img src="styles/images/fern2.png" class="img" width="589" height="109" />
+            <p>
+                Close the file and open up the server's <code>package.json</code>. Change the start script to be
+                <code>"start": "concurrently \"node ./bin/www\" \"cd ./client && npm start\"",</code>. This is
+                to run the client and server together in one command. Be sure to run
+                <code>npm install concurrently --save</code> to install concurrently.
+            </p>
+            <p>
+                At this point, most of the setup is complete. All we need to do is to add Firebase to our application.
+                Create a Firebase project from the <a href="https://console.firebase.google.com/?authuser=0">Firebase
+                console</a>. You can follow the instructions <a href="https://firebase.google.com/docs/web/setup">here</a>
+                to set up Firebase in your backend Node server.
+            </p>
+            <p>
+                Once that is done, the basic structure of your FERN application should be complete! The basic skeleton
+                application is built, and now you can use it to build whatever application you desire. Be sure to read
+                the <a href="https://firebase.google.com/docs">Firebase docs</a> thoroughly to get a good understanding
+                of how it all works. This is a general overview of how to build a FERN application, but the concept can
+                really be easily applied to any solution stack you choose to use.
+            </p>
+        </div>
+        <div class="entry scene-element scene-element--fade">
+            <h2>
                 3D Graphing, Rotations, and Projections
             </h2>
             <h3>

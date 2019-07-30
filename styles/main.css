@@ -171,8 +171,8 @@ figcaption {
     margin: auto;
     padding-top: 40px;
     display: block;
-    width: 80%;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 1080px;
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.25s;
     animation-name: zoom;
