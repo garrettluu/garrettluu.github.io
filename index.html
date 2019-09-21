@@ -31,6 +31,74 @@
     <div id="blog" class="m-scene">
         <div class="entry scene-element scene-element--fade">
             <h2>
+                "Uh, who just pushed to master?" - A Hackathon Experience
+            </h2>
+            <h3>
+                2019.9.20
+            </h3>
+            <p>
+                It's been a while since I updated this site. Summer is winding down and the new school year is about to
+                start for me, which means new classes, friends, and experiences. While first year did not go as smoothly
+                as I wanted, I hope that I will take what I learned and make the next school year even better! With that
+                in mind, today I just want to recount my first experience in a software hackathon, HackXX. I attended
+                HARD Hack in the past, but it was more of a hardware-oriented, perfect for CE and EE majors but less
+                ideal for a CS guy like me. It was still fun, not really quite what I was looking for in a hackathon.
+            </p>
+            <img src="styles/images/hackxx.png" class="img" width="1058" height="673"/>
+            <p>
+                With HackXX, I got the opportunity to attend my first software hackathon. HackXX is a women-centric
+                hackathon, with the goal of promoting gender equality in CS. I worked in a team of four as before, but
+                everyone else on my team had relatively little experience, so it was an additional challenge. With this
+                in mind, we decided from the beginning to build a web app, since they are cross-platform, fast, and
+                easy to build, especially front-end with the intuitive-ness of HTML and CSS. No need to deal with views,
+                fragments, activities, or any other quirks of mobile development. Coupled with the lax syntax of JS, it
+                becomes clear why web dev is great for beginners.
+            </p>
+            <p>
+                We started off by brainstorming for app ideas and also getting everyone up to speed on the basics of
+                HTML, CSS, and front-end JS, as well as best practices for Git, since it was obvious that we would need
+                to be sharing code and working on the same project. After some debate, we settled on a carpooling app,
+                similar to Uber but "open-source", allowing anyone to offer rides.
+                I assigned everyone to each work on a page on the
+                site, while I was responsible for the back-end. Overall, our app formed a FEN (Firebase, Express, Node,
+                and vanilla HTML) stack. React or Angular was also a possibility, but I didn't want to overcomplicate
+                things. With this in mind, we got to work and started coding.
+            </p>
+            <p>
+                It was a long 20 hours. Things did not go as smoothly as planned, but that was to be expected. With
+                limited knowledge of how Firebase worked, hooking up the backend was quite the chore. Since we wanted
+                to use location to search for users and destinations, we also needed to use the Google Maps API,
+                which I also had limited experience with. We had never really done a full-stack web application in the
+                past, so all of this was new to us. The Git repo was also starting to become disorganized, as we
+                created more feature branches and tried to resolve merge conflicts.
+            </p>
+            <p>
+                All of this continued through the night. A good portion of hackers left the venue to get some valuable
+                sleep, but we simply had too much left to do. I downed two bottles of 5-hour energy (something no one
+                should ever do) and continued. In the midst of our exhaustion, I noticed something strange in our repo:
+                some commits in the master branch that weren't there before. "Uh, who just pushed to master?" I said,
+                confused and tired. One of our teammates pushed something he was working on to master instead of his
+                own branch. I tried to fix this by merging master's changes into his branch, and rolling back the commits
+                on master. Unfortunately, this removed some of his other changes, and we lost some valuable time. In our
+                defense, it's pretty hard to manage a Git repo at 4am.
+            </p>
+            <p>
+                By morning, we had not really finished what we had planned, but we still decided to demo. We didn't have
+                much to show, and our public speaking skills were basically gone at this point, but we still made it
+                through. In conclusion, though, we managed to learn a lot, gaining value experience in full-stack web
+                development, as well as collaborating through Git. It was quite the fun experience; despite how exhausted
+                I was, I would gladly do it again!
+            </p>
+            <p>
+                Anyway, that was how my first software hackathon went, and maybe it might encourage you to participate
+                in one as well. If you want to check out the project we built,
+                <a href="https://github.com/garrettluu/carpool">click here</a>! We made a few extra commits after the
+                hackathon, but the repo has gone a bit quiet recently. We'll probably continue to work on it someday,
+                since it's quite a novel idea and a fun project.
+            </p>
+        </div>
+        <div class="entry scene-element scene-element--fade">
+            <h2>
                 Building Web Applications with the FERN Stack - Basic Setup
             </h2>
             <h3>
@@ -90,7 +158,8 @@
                 At this point, most of the setup is complete. All we need to do is to add Firebase to our application.
                 Create a Firebase project from the <a href="https://console.firebase.google.com/?authuser=0">Firebase
                 console</a>. You can follow the instructions <a href="https://firebase.google.com/docs/web/setup">here</a>
-                to set up Firebase in your backend Node server.
+                to set up Firebase in your backend Node server. (I will update this entry in the future with more specific
+                instructions).
             </p>
             <p>
                 Once that is done, the basic structure of your FERN application should be complete! The basic skeleton
