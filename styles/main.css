@@ -12,12 +12,17 @@
     src: url("fonts/Oswald-Light.ttf");
 }
 @font-face {
-    font-family:"Roboto";
+    font-family:"Roboto-Light";
     src: url("fonts/Roboto-Light.ttf");
 }
 @font-face {
     font-family:"Roboto-Bold";
     src: url("fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+    font-family:"Roboto";
+    src: url("fonts/Roboto-Regular.ttf");
 }
 
 html{
@@ -82,7 +87,7 @@ h3 {
 p {
     text-align: left;
     color: black;
-    font-family: Roboto, serif;
+    font-family: Roboto-Light, serif;
     font-size: 18px;
 }
 p a{
@@ -106,11 +111,17 @@ p a{
 .shadow {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
+.contact {
+    padding: 8px 16px;
+    width: auto;
+    text-decoration: none;
+}
+
 li {
     display: inline-block;
     background-color: white;
 }
-a {
+li a {
     /*display: block;*/
     color: #000;
     background-color: white;
@@ -285,4 +296,40 @@ figcaption {
 @keyframes fadeaway {
     from {opacity:1;}
     to {opacity:0;}
+}
+
+.bullet-list {
+    list-style-type: circle;
+}
+
+.bullet-list-item {
+    display: list-item;
+}
+
+.cool-button {
+    background: white;
+    border: none;
+    border-width: 2px;
+    border-color: black;
+    /*border-style: solid;*/
+    /*border-top: none;*/
+    /*border-left: none;*/
+    /*border-right: none;*/
+    border-radius: 2px;
+    display: inline-flex;
+}
+
+.cool-button p {
+    margin: 5px;
+    color: black;
+    font-family: Oswald-Light, sans-serif;
+    display: flex;
+}
+
+.cool-button img {
+    height: 18px;
+    width: auto;
+    z-index: 0;
+    margin-top: auto;
+    margin-bottom: auto;
 }
