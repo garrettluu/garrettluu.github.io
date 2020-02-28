@@ -336,3 +336,8 @@ figcaption {
     margin-top: auto;
     margin-bottom: auto;
 }
+
+.project-entry {
+    display: grid;
+    grid-template-columns: auto 320px;
+}
